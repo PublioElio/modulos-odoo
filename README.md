@@ -1,2 +1,2 @@
-# modulos-odoo
- Módulos de Odoo desarrollados en sistemas de gestión empresarial
+# Módulos de Odoo
+ Módulos de Odoo desarrollados en la asignatura de Sistemas de Gestión Empresarial.
