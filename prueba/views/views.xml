@@ -1,0 +1,77 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="prueba.lista">
+      <field name="name">prueba_lista</field>
+      <field name="model">prueba.prueba</field>
+      <field name="arch" type="xml">
+        <tree editable="bottom">
+          <field name="name"/>
+          <field name="numeros"/>
+          <field name="descripcion"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="prueba.formulario">
+      <field name="name">prueba_formulario</field>
+      <field name="model">prueba.prueba</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+          nombre: <field name="name"/>
+          número: <field name="numeros"/>
+        <field name="descripcion"/>
+      </group>
+    </form>
+  </field>
+</record>
+
+
+<!-- actions opening views on models -->
+<record model="ir.actions.act_window" id="prueba.action_window">
+  <field name="name">prueba_window</field>
+  <field name="res_model">prueba.prueba</field>
+  <field name="view_mode">tree,form</field>
+</record>
+
+<record model="ir.actions.act_window" id="prueba.action_formulario">
+  <field name="name">prueba_window</field>
+  <field name="res_model">prueba.prueba</field>
+  <field name="view_mode">form</field>
+</record>
+
+<!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="prueba.action_server">
+      <field name="name">prueba server</field>
+      <field name="model_id" ref="model_prueba_prueba"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+<!-- Top menu item -->
+
+<menuitem name="Ejemplo de clase" id="prueba.menu_root"/>
+
+<!-- menu categories -->
+
+<menuitem name="Menú de mi módulo" id="prueba.menu_1" parent="prueba.menu_root"/>
+
+<!-- actions -->
+
+<menuitem name="Listar" id="prueba.menu_1_listar" parent="prueba.menu_1" action="prueba.action_window"/>
+<menuitem name="Formulario" id="prueba.menu_1_formulario" parent="prueba.menu_1" action="prueba.action_formulario"/>
+<!--
+      <menuitem name="Server to list" id="prueba" parent="prueba.menu_2" action="prueba.action_server"/>
+-->
+</data>
+</odoo>

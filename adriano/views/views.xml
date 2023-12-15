@@ -1,0 +1,84 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="adriano.lista">
+      <field name="name">adriano_lista</field>
+      <field name="model">adriano.adriano</field>
+      <field name="arch" type="xml">
+        <tree editable="bottom">
+          <field name="name" />
+          <field name="apellidos" />
+          <field name="nombre_apellidos" />
+          <field name="direccion" />
+          <field name="ciudad" />
+          <field name="edad" />
+          <field name="mayor_edad" />
+          <field name="sexo" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="adriano.formulario">
+      <field name="name">adriano_formulario</field>
+      <field name="model">adriano.adriano</field>
+      <field name="arch" type="xml">
+        <form>
+          <group> Nombre: <field name="name" /> Apellidos: <field name="apellidos" />
+            Nombre y apellidos: <field name="nombre_apellidos" /> Dirección: <field name="direccion" />
+            Ciudad: <field name="ciudad" />
+            Edad: <field name="edad" />
+            ¿Mayor de edad? <field name="mayor_edad" />
+            Sexo: <field name="sexo" />
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="adriano.action_window">
+      <field name="name">adriano_window</field>
+      <field name="res_model">adriano.adriano</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="adriano.action_formulario">
+      <field name="name">adriano_window</field>
+      <field name="res_model">adriano.adriano</field>
+      <field name="view_mode">form</field>
+    </record>
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="adriano.action_server">
+      <field name="name">adriano server</field>
+      <field name="model_id" ref="model_adriano_adriano"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Módulo Adriano" id="adriano.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu Adriano" id="adriano.menu_1" parent="adriano.menu_root" />
+
+    <!-- actions -->
+
+    <menuitem name="Listar datos" id="adriano.menu_1_listar" parent="adriano.menu_1"
+      action="adriano.action_window" />
+    <menuitem name="Formulario adriano" id="adriano.menu_1_formulario"
+      parent="adriano.menu_1" action="adriano.action_formulario" />
+
+  </data>
+</odoo>

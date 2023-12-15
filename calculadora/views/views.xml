@@ -1,0 +1,80 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="calculadora.lista">
+      <field name="name">calculadora_lista</field>
+      <field name="model">calculadora.calculadora</field>
+      <field name="arch" type="xml">
+        <tree editable="bottom">
+          <field name="name" />
+          <field name="valor1" />
+          <field name="valor2" />
+          <field name="total" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="calculadora.formulario">
+      <field name="name">calculadora_formulario</field>
+      <field name="model">calculadora.calculadora</field>
+      <field name="arch" type="xml">
+        <form>
+          <group> Nombre de la operación: <field name="name" /> Valor 1: <field name="valor1" />
+            Valor 2: <field name="valor2" /> Total: <field name="total" />
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="calculadora.action_window">
+      <field name="name">calculadora_window</field>
+      <field name="res_model">calculadora.calculadora</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="calculadora.action_formulario">
+      <field name="name">calculadora_window</field>
+      <field name="res_model">calculadora.calculadora</field>
+      <field name="view_mode">form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="calculadora.action_server">
+      <field name="name">calculadora server</field>
+      <field name="model_id" ref="model_calculadora_calculadora"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Módulo Calculadora" id="calculadora.menu_root" />
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu calculadora" id="calculadora.menu_1" parent="calculadora.menu_root" />
+
+    <!-- actions -->
+
+    <menuitem name="Listar operaciones" id="calculadora.menu_1_listar" parent="calculadora.menu_1"
+      action="calculadora.action_window" />
+    <menuitem name="Formulario calculadora" id="calculadora.menu_1_formulario"
+      parent="calculadora.menu_1" action="calculadora.action_formulario" />
+
+    <!--    
+    <menuitem name="Server to list" id="calculadora" parent="calculadora.menu_2"
+    action="calculadora.action_server"/>
+    -->
+  </data>
+</odoo>
