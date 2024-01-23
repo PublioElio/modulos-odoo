@@ -1,0 +1,80 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="concesionario.trabajador_list">
+      <field name="name">Trabajador Lista</field>
+      <field name="model">concesionario.trabajador</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre" />
+          <field name="apellido1" />
+          <field name="apellido2" />
+          <field name="telefono" />
+          <field name="concesionario" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="concesionario.trabajador_formulario">
+      <field name="name">trabajador formulario</field>
+      <field name="model">concesionario.trabajador</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="nombre" />
+            <field name="apellido1" />
+            <field name="apellido2" />
+            <field name="telefono" />
+            <field name="concesionario" />
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="concesionario.trabajador_action_window">
+      <field name="name">Trabajador ventana</field>
+      <field name="res_model">concesionario.trabajador</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="concesionario.trabajador_action_formulario">
+      <field name="name">Trabajador formulario</field>
+      <field name="res_model">concesionario.trabajador</field>
+      <field name="view_mode">form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="concesionario.action_server">
+      <field name="name">concesionario server</field>
+      <field name="model_id" ref="model_concesionario_concesionario"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+    
+    <menuitem name="Concesionario" id="concesionario.menu_root"/>
+
+    <!-- menu categories -->
+    
+    <menuitem name="Trabajadores" id="concesionario.menu_4" parent="concesionario.menu_root"/>
+
+    <!-- actions -->
+    
+    <menuitem name="Listar trabajadores" id="concesionario.menu_trabajador_1_list" parent="concesionario.menu_4"
+              action="concesionario.trabajador_action_window"/>
+    <menuitem name="Formulario trabajador" id="concesionario.menu_trabajador_2_form" parent="concesionario.menu_4"
+              action="concesionario.trabajador_action_formulario"/>
+
+  </data>
+</odoo>

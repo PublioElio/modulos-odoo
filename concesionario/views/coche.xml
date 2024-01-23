@@ -1,0 +1,82 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="concesionario.coche_list">
+      <field name="name">Coche Lista</field>
+      <field name="model">concesionario.coche</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="matricula" />
+          <field name="modelo" />
+          <field name="year" />
+          <field name="puertas" />
+          <field name="motor" />
+          <field name="marca" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="concesionario.coche_formulario">
+      <field name="name">Coche formulario</field>
+      <field name="model">concesionario.coche</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="matricula" />
+            <field name="modelo" />
+            <field name="year" />
+            <field name="puertas" />
+            <field name="motor" />
+            <field name="marca" />
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="concesionario.coche_action_window">
+      <field name="name">Coche ventana</field>
+      <field name="res_model">concesionario.coche</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="concesionario.coche_action_formulario">
+      <field name="name">Coche formulario</field>
+      <field name="res_model">concesionario.coche</field>
+      <field name="view_mode">form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="concesionario.action_server">
+      <field name="name">concesionario server</field>
+      <field name="model_id" ref="model_concesionario_concesionario"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+    
+    <menuitem name="Concesionario" id="concesionario.menu_root"/>
+
+    <!-- menu categories -->
+    
+    <menuitem name="Coches" id="concesionario.menu_2" parent="concesionario.menu_root"/>
+
+    <!-- actions -->
+    
+    <menuitem name="Listar coches" id="concesionario.menu_coche_1_list" parent="concesionario.menu_2"
+              action="concesionario.coche_action_window"/>
+    <menuitem name="Formulario coche" id="concesionario.menu_coche_2_form" parent="concesionario.menu_2"
+              action="concesionario.coche_action_formulario"/>
+
+  </data>
+</odoo>

@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "prueba",
+    'name': "concesionario",
 
     'summary': """
-        PRIMER MÓDULO DE PRUEBA """,
+        Este módulo es una relación de coches de un concesionario, con sus marcas""",
 
     'description': """
-        Descripción de mi módulo
+        Este es un módulo de un cocesionario de coches
     """,
 
     'author': "Adriano Díaz",
-    'website': "https://www.google.com",
+    'website': "https://github.com/PublioElio",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
@@ -25,7 +25,10 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
-        'views/usuarios.xml',
+        'views/coche.xml',
+        'views/marca.xml',
+        'views/concesionario.xml',
+        'views/trabajador.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
