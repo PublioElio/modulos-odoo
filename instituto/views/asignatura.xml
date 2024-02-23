@@ -1,0 +1,116 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="instituto.asignatura_lista">
+      <field name="name">instituto_asignatura_lista</field>
+      <field name="model">instituto.asignatura</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre" />
+          <field name="nivel" />
+          <field name="profesor" />
+          <field name="alumnado" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="instituto.asignatura_formulario">
+      <field name="name">instituto_asignatura_formulario</field>
+      <field name="model">instituto.asignatura</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <notebook>
+              <page string="Información de la asignatura">
+                <group>
+                  <field name="nombre" />
+                  <field name="nivel" />
+                  <field name="imagen" widget="image" />
+                  <field name="profesor" />
+                  <field name="alumnado" />
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="instituto.asignatura_kanban">
+      <field name="name">instituto_asignatura_kanban</field>
+      <field name="model">instituto.asignatura</field>
+      <field name="arch" type="xml">
+        <kanban class="o_instituto_asignatura_kanban">
+          <field name="nombre" />
+          <field name="id" />
+          <field name="nivel" />
+          <field name="imagen" />
+          <field name="profesor" />
+          <field name="alumnado" />
+          <templates>
+            <t t-name="kanban-box">
+              <div t-attf-class="oe_kanban_global_click">
+                <div class="o_image_64_contain">
+                  <img alt="Imagen asignatura"
+                    t-att-src="kanban_image('instituto.asignatura', 'imagen', record.id.raw_value)"
+                    style="width:60px; height:60px" />
+                </div>
+                <div class="oe_kanban_details">
+                  <strong class="o_kanban_record_title">
+                    <field name="nombre" />
+                  </strong>
+                  <div t-if="record.nombre.value">
+                    <t t-esc="record.nombre.value" />
+                  </div>
+                  <div t-if="record.profesor.value">
+                    <t t-esc="record.profesor.value" />
+                  </div>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="instituto.asignatura_ventana">
+      <field name="name">Ventana asignaturas</field>
+      <field name="res_model">instituto.asignatura</field>
+      <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="editoriales.action_server">
+      <field name="name">editoriales server</field>
+      <field name="model_id" ref="model_editoriales_editoriales"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Instituto" id="instituto.menu_root" />
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu" id="instituto.menu_1" parent="instituto.menu_root" />
+
+    <!-- actions -->
+    
+    <menuitem name="Asignaturas" id="instituto.menu_1_asignatura" parent="instituto.menu_1"
+              action="instituto.asignatura_ventana"/>
+
+  </data>
+</odoo>

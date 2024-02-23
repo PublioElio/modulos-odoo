@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "editoriales",
+    'name': "instituto",
 
     'summary': """
-        Este módulo gestiona editoriales de cómics""",
+        Un módulo de gestión de un instituto""",
 
     'description': """
-        Este módulo está pensado para recopilar las distintas editoriales de cómis que venden sus publicaciones en España, incluyendo sus principales colecciones, cómics individuales y autores
+        Módulo de gestión de un instituto
     """,
 
-    'author': "Adriano Díaz Benítez",
+    'author': "Adriano Díaz",
     'website': "https://github.com/PublioElio",
 
     # Categories can be used to filter modules in modules listing
@@ -26,11 +26,9 @@
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-        'views/editorial.xml',
-        'views/coleccion.xml',
-        'views/comic.xml',
-        'views/autor.xml',
-        'reports/informe_comics.xml',
+        'views/asignatura.xml',
+        'views/estudiante.xml',
+        'views/profesor.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

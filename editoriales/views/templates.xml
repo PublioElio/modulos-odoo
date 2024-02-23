@@ -1,24 +1,24 @@
 <odoo>
-    <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
-        </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
-            </t>
-          </dl>
-        </template>
--->
-    </data>
+  <data>
+    <template id="informe_comic_card">
+      <t t-call='web.html_container'>
+        <t t-foreach="docs" t-as="micomic">
+          <t t-call="web.external_layout">
+            <div class="page">
+              <h2>CÓMICS</h2>
+              <img t-attf-src="data:image/*;base64,{{micomic.portada}}"
+                style="max-height: 100px;max-width: 200px;padding:2px;"
+                align="center" />
+              <p>Título: <span t-field="micomic.nombre" />
+              </p>
+              <p>Autores: <span t-field="micomic.autores" />
+              </p>
+              <p>Colección: <span t-field="micomic.coleccion" />
+              </p>
+            </div>
+          </t>
+        </t>
+      </t>
+    </template>
+  </data>
 </odoo>

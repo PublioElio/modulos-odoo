@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <report
+            string='Informe cómic'
+            id='editoriales.comic_report'
+            model='editoriales.comic'
+            report_type='qweb-pdf'
+            name='editoriales.informe_comic_card'
+            file='editoriales.report_libro_card'
+        />
+    </data>
+</odoo>

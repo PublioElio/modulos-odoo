@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_instituto_profesor,instituto.profesor,model_instituto_profesor,base.group_user,1,1,1,1
+access_instituto_estudiante,instituto.estudiante,model_instituto_estudiante,base.group_user,1,1,1,1
+access_instituto_asignatura,instituto.asignatura,model_instituto_asignatura,base.group_user,1,1,1,1

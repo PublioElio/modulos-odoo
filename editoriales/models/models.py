@@ -74,3 +74,16 @@ class autor(models.Model):
                                 relation='editoriales_autores',
                                 column1='id_autor',
                                 column2='id_editorial')
+    
+class informecomic(models.AbstractModel):
+    _name="report.editoriales.informe_comic_card"
+
+    @api.model
+    def _get_report_values(self, docids, data=None):
+        report_obj = self.env['ir.actions.report']
+        report = report_obj._get_report_from_name('editoriales.informe_comic_card')
+        return {    
+            'doc_ids': docids,
+            'doc_model': self.env['editoriales.comic'],
+            'docs': self.env['editoriales.comic'].browse(docids)
+        }

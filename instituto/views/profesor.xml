@@ -1,0 +1,84 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="instituto.profesor_lista">
+      <field name="name">instituto_profesor_lista</field>
+      <field name="model">instituto.profesor</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre" />
+          <field name="direccion" />
+          <field name="ciudad" />
+          <field name="telefono" />
+          <field name="asignaturas" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="instituto.profesor_formulario">
+      <field name="name">instituto_profesor_formulario</field>
+      <field name="model">instituto.profesor</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <notebook>
+              <page string="Información del profesor">
+                <group>
+                  <field name="nombre" />
+                  <field name="direccion" />
+                  <field name="ciudad" />
+                  <field name="telefono" />
+                  <field name="asignaturas" />
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="instituto.profesor_ventana">
+      <field name="name">Ventana profesores</field>
+      <field name="res_model">instituto.profesor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="editoriales.action_server">
+      <field name="name">editoriales server</field>
+      <field name="model_id" ref="model_editoriales_editoriales"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Instituto"
+      id="instituto.menu_root" />
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu"
+      id="instituto.menu_1"
+      parent="instituto.menu_root" />
+
+    <!-- actions -->
+
+    <menuitem name="Profesores"
+      id="instituto.menu_1_profesor"
+      parent="instituto.menu_1"
+      action="instituto.profesor_ventana" />
+  </data>
+</odoo>
