@@ -1,0 +1,79 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="mihw.comprador_lista">
+      <field name="name">mihw_comprador_lista</field>
+      <field name="model">mihw.comprador</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre" />
+          <field name="apellidos" />
+          <field name="direccion" />
+          <field name="ciudad" />
+          <field name="equipos" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="mihw.comprador_formulario">
+      <field name="name">mihw_comprador_formulario</field>
+      <field name="model">mihw.comprador</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <notebook>
+              <page string="Información del comprador">
+                <group>
+                  <field name="nombre" />
+                  <field name="apellidos" />
+                  <field name="direccion" />
+                  <field name="ciudad" />
+                  <field name="equipos" />
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="mihw.comprador_ventana">
+      <field name="name">Ventana compradores</field>
+      <field name="res_model">mihw.comprador</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="editoriales.action_server">
+      <field name="name">editoriales server</field>
+      <field name="model_id" ref="model_editoriales_editoriales"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="MIHW" id="mihw.menu_root" />
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu" id="mihw.menu_1" parent="mihw.menu_root" />
+
+    <!-- actions -->
+
+    <menuitem name="Compradores" id="mihw.menu_1_comprador" parent="mihw.menu_1"
+      action="mihw.comprador_ventana" />
+  </data>
+</odoo>

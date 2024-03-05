@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mihw_equipo,mihw.equipo,model_mihw_equipo,base.group_user,1,1,1,1
+access_mihw_comprador,mihw.comprador,model_mihw_comprador,base.group_user,1,1,1,1
+access_mihw_componente,mihw.componente,model_mihw_componente,base.group_user,1,1,1,1

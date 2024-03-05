@@ -1,0 +1,116 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="mihw.componente_lista">
+      <field name="name">mihw_componente_lista</field>
+      <field name="model">mihw.componente</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre" />
+          <field name="tipo" />
+          <field name="valor" />
+          <field name="equipos" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="mihw.componente_formulario">
+      <field name="name">mihw_componente_formulario</field>
+      <field name="model">mihw.componente</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <notebook>
+              <page string="Información de la componente">
+                <group>
+                  <field name="nombre" />
+                  <field name="tipo" />
+                  <field name="valor" />
+                  <field name="imagen" widget="image" />
+                  <field name="equipos" />
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="mihw.componente_kanban">
+      <field name="name">mihw_componente_kanban</field>
+      <field name="model">mihw.componente</field>
+      <field name="arch" type="xml">
+        <kanban class="o_mihw_componente_kanban">
+          <field name="nombre" />
+          <field name="id" />
+          <field name="tipo" />
+          <field name="valor" />
+          <field name="imagen" />
+          <field name="equipos" />
+          <templates>
+            <t t-name="kanban-box">
+              <div t-attf-class="oe_kanban_global_click">
+                <div class="o_image_64_contain">
+                  <img alt="Imagen componente"
+                    t-att-src="kanban_image('mihw.componente', 'imagen', record.id.raw_value)"
+                    style="width:60px; height:60px" />
+                </div>
+                <div class="oe_kanban_details">
+                  <strong class="o_kanban_record_title">
+                    <field name="nombre" />
+                  </strong>
+                  <div t-if="record.nombre.value">
+                    <t t-esc="record.nombre.value" />
+                  </div>
+                  <div t-if="record.tipo.value">
+                    <t t-esc="record.tipo.value" />
+                  </div>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="mihw.componente_ventana">
+      <field name="name">Ventana componentes</field>
+      <field name="res_model">mihw.componente</field>
+      <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="editoriales.action_server">
+      <field name="name">editoriales server</field>
+      <field name="model_id" ref="model_editoriales_editoriales"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="MIHW" id="mihw.menu_root" />
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu" id="mihw.menu_1" parent="mihw.menu_root" />
+
+    <!-- actions -->
+
+    <menuitem name="Componentes" id="mihw.menu_1_componente" parent="mihw.menu_1"
+      action="mihw.componente_ventana" />
+
+  </data>
+</odoo>
